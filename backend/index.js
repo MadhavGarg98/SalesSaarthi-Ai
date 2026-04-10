@@ -3,7 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 // Import cleanup utilities
-const { scheduleCleanup } = require('./backend/utils/cleanup');
+const { scheduleCleanup } = require('./utils/cleanup');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,11 +20,11 @@ app.use((err, req, res, next) => {
 });
 
 // Import routes (bypass cache)
-const webhookRoutes = require('./backend/routes/webhook');
-const productRoutes = require('./backend/routes/products');
-const analyticsRoutes = require('./backend/routes/analytics');
-const orderRoutes = require('./backend/routes/orders');
-const paymentRoutes = require('./backend/routes/payment');
+const webhookRoutes = require('./routes/webhook');
+const productRoutes = require('./routes/products');
+const analyticsRoutes = require('./routes/analytics');
+const orderRoutes = require('./routes/orders');
+const paymentRoutes = require('./routes/payment');
 
 // Use routes
 app.use('/webhook', webhookRoutes);
